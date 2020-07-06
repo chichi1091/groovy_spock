@@ -1,4 +1,4 @@
-package tddbc;
+package tddbc
 
 import spock.lang.Specification
 import spock.lang.Unroll
@@ -16,7 +16,8 @@ class SampleSpec extends Specification {
         result == "[3,8]"
     }
 
-    def "下＞＝上の場合は閉区間が作れない"() {
+    @Unroll
+    def "#start ＞＝ #end の場合は閉区間が作れない"() {
         when:
         def target = new ClosedRange(start, end)
 
