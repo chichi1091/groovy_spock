@@ -16,31 +16,18 @@ class SampleSpec extends Specification {
         result == "[3,8]"
     }
 
-    def "should return 'Hello TDD BootCamp!' in Java"() {
-
-        given:
-        def sut = new ClosedRange()
-
+    def "下＞＝上の場合は閉区間が作れない"() {
         when:
-        String actual = sut.say()
+        def target = new ClosedRange(start, end)
 
         then:
-        actual == 'Hello TDD BootCamp!'
-
-    }
-
-    @Unroll
-    def "should return '#expected' in Groovy"() {
-
-        given:
-        def sut = new SampleOfGroovy()
-
-        expect:
-        sut.say() == expected
+        // 例外が来たことをチェックしたい
+        thrown(IllegalArgumentException)
 
         where:
-        expected << ['Hello TDD BootCamp!']
-
+        start | end
+        10 | 8
+        8 | 8
     }
 
 }
